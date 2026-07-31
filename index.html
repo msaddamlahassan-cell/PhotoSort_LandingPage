@@ -3,18 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PhotoSort adalah aplikasi desktop untuk fotografer profesional yang mengotomatiskan sortir foto, seleksi kualitas, upload ke Google Drive, dan pembuatan galeri klien.">
     <meta name="google-site-verification" content="7BoIlmtfHRv0yt0NXooRH6DjkfQXyf7rq5FRppPaYFY" />
-    <title>PhotoSort - Manajemen Foto Cerdas & Cepat</title>
+    <title>PhotoSort - Manajemen Foto Cerdas & Cepat untuk Fotografer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        .step-line::after {
+            content: '';
+            position: absolute;
+            left: 27px;
+            top: 60px;
+            bottom: -20px;
+            width: 2px;
+            background: repeating-linear-gradient(to bottom, #CBD5E1 0, #CBD5E1 6px, transparent 6px, transparent 12px);
+        }
+        .step-item:last-child .step-line::after { display: none; }
+    </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
-
-    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+ 
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center sticky top-0 bg-slate-50/90 backdrop-blur z-50">
         <div class="text-2xl font-bold text-blue-600">
             <i class="fa-solid fa-images mr-2"></i>PhotoSort
         </div>
-        <div class="hidden md:flex space-x-6">
+        <div class="hidden md:flex space-x-6 text-sm font-medium">
+            <a href="#tentang" class="hover:text-blue-600 transition">Tentang</a>
+            <a href="#cara-kerja" class="hover:text-blue-600 transition">Cara Kerja</a>
             <a href="#fitur" class="hover:text-blue-600 transition">Fitur</a>
             <a href="#platform" class="hover:text-blue-600 transition">Platform</a>
         </div>
@@ -22,13 +38,14 @@
             Download
         </a>
     </nav>
-
+ 
+    <!-- HERO -->
     <section class="container mx-auto px-6 py-20 text-center">
         <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-6">
             Sortir Foto Ribuan Kali <span class="text-blue-600">Lebih Cepat</span>
         </h1>
         <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto">
-            Sederhanakan <i>workflow</i> manajemen aset visual Anda. PhotoSort dirancang khusus untuk mempercepat proses seleksi, pengelompokan, dan manajemen file tanpa membuang waktu berjam-jam.
+            PhotoSort adalah aplikasi desktop untuk fotografer profesional yang mengotomatiskan seleksi, pengelompokan, upload, dan pengiriman hasil foto ke klien, tanpa drag-drop manual berjam-jam di File Explorer.
         </p>
         <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
             <a href="https://www.instagram.com/hiro.fx/" target="_blank" rel="noopener noreferrer" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 shadow-lg transition w-full sm:w-auto">
@@ -39,71 +56,268 @@
             </a>
         </div>
     </section>
-
-    <section id="fitur" class="bg-white py-20">
+ 
+    <!-- TENTANG / APA ITU PHOTOSORT -->
+    <section id="tentang" class="bg-white py-20 border-t border-slate-100">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Apa itu PhotoSort?</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-3 mb-6">Aplikasi Desktop Khusus Fotografer, Bukan Sekadar File Manager</h2>
+                    <p class="text-slate-600 mb-4 leading-relaxed">
+                        Setelah sesi pemotretan, baik itu wedding, prewedding, wisuda, atau event, fotografer biasanya menghadapi ribuan file RAW dan JPEG yang harus dipilah manual: mana yang masuk folder klien A, mana yang untuk klien B, mana yang layak dikirim, mana yang buram atau duplikat.
+                    </p>
+                    <p class="text-slate-600 mb-4 leading-relaxed">
+                        <strong>PhotoSort</strong> dibangun untuk menghilangkan proses manual itu. Aplikasi ini berjalan di komputer Anda (Windows & macOS), membaca kode klien dari nama file, memisahkan foto secara otomatis ke folder yang rapi, lalu mengunggahnya ke Google Drive dan membuatkan halaman galeri online agar klien bisa memilih fotonya sendiri.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed">
+                        Hasilnya: satu aplikasi yang menangani seluruh alur kerja dari kartu memori sampai foto terpilih ada di tangan klien, tanpa perlu berpindah-pindah folder, tanpa upload manual satu per satu.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                        <i class="fa-solid fa-bolt text-blue-600 text-2xl mb-3"></i>
+                        <p class="font-semibold text-slate-800">Otomatis</p>
+                        <p class="text-sm text-slate-500">Sortir berdasarkan kode klien tanpa sentuh mouse berkali-kali</p>
+                    </div>
+                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                        <i class="fa-solid fa-cloud-arrow-up text-blue-600 text-2xl mb-3"></i>
+                        <p class="font-semibold text-slate-800">Terhubung Cloud</p>
+                        <p class="text-sm text-slate-500">Langsung tersinkron ke Google Drive & galeri web klien</p>
+                    </div>
+                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                        <i class="fa-solid fa-shield-halved text-blue-600 text-2xl mb-3"></i>
+                        <p class="font-semibold text-slate-800">Aman</p>
+                        <p class="text-sm text-slate-500">Enkripsi lisensi & data mengikuti standar keamanan modern</p>
+                    </div>
+                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                        <i class="fa-solid fa-desktop text-blue-600 text-2xl mb-3"></i>
+                        <p class="font-semibold text-slate-800">Desktop App</p>
+                        <p class="text-sm text-slate-500">Ringan, cepat, jalan penuh di Windows & macOS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- CARA KERJA -->
+    <section id="cara-kerja" class="py-20">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-slate-900">Dirancang Untuk Efisiensi Kreatif</h2>
+                <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Alur Kerja</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-3">Bagaimana PhotoSort Bekerja</h2>
+                <p class="text-slate-600 mt-4 max-w-xl mx-auto">Dari folder mentah di kartu memori sampai foto terpilih dikirim ke klien, semuanya dalam satu alur.</p>
+            </div>
+ 
+            <div class="max-w-2xl mx-auto space-y-10">
+                <div class="step-item step-line relative flex gap-6">
+                    <div class="w-14 h-14 shrink-0 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg z-10">1</div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 mb-1">Buat Proyek & Masukkan Kode Klien</h3>
+                        <p class="text-slate-600">Buat proyek baru di Dashboard, lalu masukkan daftar kode klien (misalnya kode undangan atau nomor urut) yang akan dipakai sebagai penanda saat sortir otomatis.</p>
+                    </div>
+                </div>
+                <div class="step-item step-line relative flex gap-6">
+                    <div class="w-14 h-14 shrink-0 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg z-10">2</div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 mb-1">Auto Sort atau Smart Select</h3>
+                        <p class="text-slate-600">Tarik (drag & drop) folder sumber dan tujuan. Gunakan <strong>Auto Sort</strong> untuk memisahkan foto per kode klien secara instan, atau <strong>Smart Select</strong> agar sistem otomatis mendeteksi foto duplikat/mirip dan memilih yang paling tajam & berkualitas.</p>
+                    </div>
+                </div>
+                <div class="step-item step-line relative flex gap-6">
+                    <div class="w-14 h-14 shrink-0 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg z-10">3</div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 mb-1">Review Manual Jika Perlu</h3>
+                        <p class="text-slate-600">Masuk ke mode <strong>Manual Sort</strong> untuk meninjau satu per satu dengan viewer zoom/pan/rotate, lalu tandai tiap foto ke kategori pakai hotkey custom, jauh lebih cepat daripada klik manual.</p>
+                    </div>
+                </div>
+                <div class="step-item step-line relative flex gap-6">
+                    <div class="w-14 h-14 shrink-0 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg z-10">4</div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 mb-1">Upload Otomatis ke Google Drive</h3>
+                        <p class="text-slate-600">Antrekan banyak klien sekaligus (batch), lalu PhotoSort mengunggah hasil sortir ke folder Google Drive Anda dan otomatis membuat halaman galeri web untuk tiap klien, lengkap dengan kuota jumlah foto dan masa aktif link.</p>
+                    </div>
+                </div>
+                <div class="step-item step-line relative flex gap-6">
+                    <div class="w-14 h-14 shrink-0 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg z-10">5</div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 mb-1">Klien Memilih Foto Sendiri</h3>
+                        <p class="text-slate-600">Klien membuka link galeri di browser mereka, melihat semua foto, lalu memilih mana yang ingin di-download atau dicetak, tanpa perlu install aplikasi apa pun.</p>
+                    </div>
+                </div>
+                <div class="step-item step-line relative flex gap-6">
+                    <div class="w-14 h-14 shrink-0 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg z-10">6</div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 mb-1">Notifikasi & Tarik Data Pilihan</h3>
+                        <p class="text-slate-600">PhotoSort mengirim notifikasi native ke desktop begitu klien selesai memilih. Anda tinggal klik "Tarik Data" untuk mengambil daftar foto pilihan langsung ke aplikasi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- FITUR -->
+    <section id="fitur" class="bg-white py-20 border-t border-slate-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Fitur</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-3">Dirancang Untuk Efisiensi Kreatif</h2>
                 <p class="text-slate-600 mt-4">Berhenti membuang waktu dengan sistem folder manual.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+ 
+            <!-- Kategori: Sortir & Seleksi -->
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6">Sortir & Seleksi Foto</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                 <div class="p-8 bg-slate-50 rounded-xl border border-slate-100 hover:shadow-md transition">
                     <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl mb-6">
                         <i class="fa-solid fa-bolt"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Workflow Cepat</h3>
-                    <p class="text-slate-600">Alur kerja yang disesuaikan dengan standar fotografer profesional. Eksekusi penyortiran dengan menekan tombol singkat tanpa delay.</p>
+                    <h4 class="text-xl font-bold mb-3">Auto Sort by Kode Klien</h4>
+                    <p class="text-slate-600">Sortir ratusan bahkan ribuan foto otomatis berdasarkan kode klien yang terbaca dari nama file, lengkap deteksi duplikat dan verifikasi checksum agar file tidak korup.</p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-xl border border-slate-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Smart Select</h4>
+                    <p class="text-slate-600">Analisis kemiripan gambar dan kualitas ketajaman untuk otomatis memilih satu foto terbaik dari tiap grup foto yang mirip/burst, lalu tinjau hasilnya lewat halaman review sebelum dikonfirmasi.</p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-xl border border-slate-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-hand-pointer"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Manual Sort + Hotkey</h4>
+                    <p class="text-slate-600">Tinjau foto satu per satu dengan viewer zoom, pan, dan rotate, lalu kategorikan secara instan memakai hotkey keyboard yang bisa Anda atur sendiri per kategori.</p>
                 </div>
                 <div class="p-8 bg-slate-50 rounded-xl border border-slate-100 hover:shadow-md transition">
                     <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl mb-6">
                         <i class="fa-solid fa-folder-tree"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Manajemen Akurat</h3>
-                    <p class="text-slate-600">Pisahkan file RAW dan JPEG secara otomatis. Struktur folder yang rapi akan langsung siap untuk masuk ke tahap editing.</p>
+                    <h4 class="text-xl font-bold mb-3">Pisah RAW & JPEG</h4>
+                    <p class="text-slate-600">Pisahkan file RAW dan JPEG secara otomatis ke struktur folder yang rapi, siap langsung masuk ke tahap editing tanpa perlu dirapikan ulang.</p>
                 </div>
+                <div class="p-8 bg-slate-50 rounded-xl border border-slate-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Multi-Klien Batch</h4>
+                    <p class="text-slate-600">Scan satu folder utama berisi banyak klien sekaligus, lalu proses semuanya dalam satu antrean tanpa harus mengulang setup per klien.</p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-xl border border-slate-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Undo & Progress Tracking</h4>
+                    <p class="text-slate-600">Batalkan keputusan sortir terakhir kapan saja, dengan indikator progres real-time untuk tiap antrean yang sedang berjalan.</p>
+                </div>
+            </div>
+ 
+            <!-- Kategori: Cloud & Client -->
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6">Cloud & Galeri Klien</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                 <div class="p-8 bg-slate-50 rounded-xl border border-slate-100 hover:shadow-md transition">
                     <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl mb-6">
                         <i class="fa-brands fa-google-drive"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Integrasi Google Drive</h3>
-                    <p class="text-slate-600">Otomatis unggah hasil sortir ke folder Google Drive Anda dan buat tautan galeri klien interaktif secara instan tanpa perlu membuka browser.</p>
+                    <h4 class="text-xl font-bold mb-3">Integrasi Google Drive</h4>
+                    <p class="text-slate-600">Otomatis unggah hasil sortir ke folder Google Drive Anda, dengan dukungan berpindah antar banyak akun Google Drive tanpa logout-login berulang.</p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-xl border border-slate-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-link"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Link Galeri Otomatis</h4>
+                    <p class="text-slate-600">Setiap klien mendapat halaman galeri web sendiri lengkap dengan kuota jumlah foto yang bisa dipilih dan masa aktif link yang bisa Anda atur.</p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-xl border border-slate-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-folder-open"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Import dari Link Drive</h4>
+                    <p class="text-slate-600">Sudah punya folder di Google Drive? Buat galeri klien langsung dari link folder yang sudah ada tanpa perlu re-upload foto sama sekali.</p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-xl border border-slate-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-bell"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Notifikasi Real-time</h4>
+                    <p class="text-slate-600">Proses latar belakang otomatis memantau galeri klien dan mengirim notifikasi native ke desktop begitu klien selesai memilih fotonya.</p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-xl border border-slate-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-user-group"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Client Hub</h4>
+                    <p class="text-slate-600">Pantau status semua klien dalam satu proyek, salin link galeri, tarik data pilihan foto, atau hapus klien yang sudah selesai, semua dari satu layar.</p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-xl border border-slate-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-wifi"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Monitor Koneksi</h4>
+                    <p class="text-slate-600">Indikator sinyal & ping bawaan agar Anda tahu kapan koneksi cukup stabil sebelum memulai upload dalam jumlah besar.</p>
+                </div>
+            </div>
+ 
+            <!-- Kategori: Keamanan & Pengalaman Pengguna -->
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6">Keamanan & Kemudahan</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 bg-slate-50 rounded-xl border border-slate-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Lisensi & Data Terenkripsi</h4>
+                    <p class="text-slate-600">Sistem lisensi memakai tanda tangan kriptografi modern dan akses data mengikuti kebijakan keamanan ketat per akun, sehingga data proyek dan klien Anda tetap terlindungi.</p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-xl border border-slate-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-language"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Dwibahasa (ID/EN)</h4>
+                    <p class="text-slate-600">Antarmuka bisa dialihkan antara Bahasa Indonesia dan Inggris kapan saja lewat menu Pengaturan.</p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-xl border border-slate-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Tur Panduan Interaktif</h4>
+                    <p class="text-slate-600">Panduan langkah demi langkah langsung di dalam aplikasi untuk membantu pengguna baru memahami tiap fitur tanpa harus baca manual terpisah.</p>
                 </div>
             </div>
         </div>
     </section>
-
+ 
+    <!-- PLATFORM -->
     <section id="platform" class="container mx-auto px-6 py-20">
         <div class="bg-blue-600 rounded-2xl p-10 md:p-16 flex flex-col md:flex-row items-center justify-between shadow-2xl text-white">
             <div class="md:w-1/2 mb-10 md:mb-0 text-center md:text-left">
-                <h2 class="text-3xl font-bold mb-4">Mendukung Berbagai Platform</h2>
+                <h2 class="text-3xl font-bold mb-4">Berjalan Native di Desktop</h2>
                 <p class="text-blue-100 text-lg">
-                    Bawa kemudahan <i>sorting</i> ke dalam genggaman. PhotoSort dibangun dengan performa tangguh, siap digunakan di perangkat Windows, optimal di arsitektur Apple Silicon (M1+), dan terintegrasi di Android.
+                    PhotoSort dibangun sebagai aplikasi desktop yang ringan dan cepat, dengan installer khusus untuk tiap sistem operasi, siap dipakai di Windows maupun macOS dengan performa optimal di Apple Silicon (M1 ke atas).
                 </p>
             </div>
-            <div class="md:w-1/2 flex justify-center space-x-6 md:space-x-10">
+            <div class="md:w-1/2 flex justify-center space-x-10 md:space-x-16">
                 <div class="text-center">
                     <i class="fa-brands fa-windows text-5xl mb-3"></i>
                     <p class="font-medium">Windows</p>
+                    <p class="text-xs text-blue-200 mt-1">Installer .exe</p>
                 </div>
                 <div class="text-center">
                     <i class="fa-brands fa-apple text-5xl mb-3"></i>
                     <p class="font-medium">macOS <br><span class="text-xs font-normal opacity-80">(M1/M2/M3)</span></p>
-                </div>
-                <div class="text-center">
-                    <i class="fa-brands fa-android text-5xl mb-3"></i>
-                    <p class="font-medium">Android</p>
+                    <p class="text-xs text-blue-200 mt-1">Installer .pkg</p>
                 </div>
             </div>
         </div>
     </section>
-
+ 
     <footer id="download" class="bg-slate-900 text-slate-400 py-10">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-2xl font-bold text-white mb-6">Siap mempercepat alur kerja Anda?</h2>
             <a href="https://www.instagram.com/hiro.fx/" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-400 transition mb-10">
                 Hubungi via Instagram untuk Download
             </a>
-            
+ 
             <div class="border-t border-slate-800 pt-8 mt-8 text-sm flex flex-col md:flex-row justify-center items-center space-y-2 md:space-x-4 md:space-y-0">
                 <span>&copy; 2026 PhotoSort. All rights reserved.</span>
                 <span class="hidden md:inline text-slate-600">|</span>
@@ -111,12 +325,12 @@
                 <span class="hidden md:inline text-slate-600">|</span>
                 <a href="terms-of-service.html" class="hover:text-blue-400 transition underline">Terms of Service</a>
             </div>
-            
+ 
             <div class="mt-4 text-slate-500 text-xs">
                 Contact & Support: <a href="mailto:msaddamlahassan@gmail.com" class="hover:text-blue-400 underline">msaddamlahassan@gmail.com</a>
             </div>
         </div>
     </footer>
-
+ 
 </body>
 </html>
